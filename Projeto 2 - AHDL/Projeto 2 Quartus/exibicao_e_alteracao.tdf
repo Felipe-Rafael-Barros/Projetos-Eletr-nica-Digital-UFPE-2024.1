@@ -1,0 +1,220 @@
+TITLE "Exibição e Alteração de Hora e Alarmes";
+
+INCLUDE "alarme.inc";
+INCLUDE "relogio.inc";
+INCLUDE "conversor_relogio.inc";
+
+SUBDESIGN exibicao_e_alteracao
+(
+
+	clock,seletor_alteracao[0..1], seletor_display[0..1], clk_segundo, clk_buzzer, botao1, botao2, botao3, botao4 : INPUT;
+	
+	saida1[0..3], saida2[0..3], saida3[0..3], saida4[0..3], Buzzer, ativar_piscar, led1, led2, led3, led4, ativar_despertador : OUTPUT;
+)
+
+VARIABLE
+
+	relogio1 : relogio;   --instanciamento das funções relógio e alarme
+	alarme1 : alarme;
+	alarme2 : alarme;
+	alarme3 : alarme;
+	--clk_relogio : conversor_relogio WITH (n=32,count=3000000000); -- MINUTO
+	clk_relogio : conversor_relogio WITH (n=24,count=10000000);  -- TEMPO PARA TESTE 0,2 SEGUNDOS
+	
+	clock_relogio, clk_alteracao, formato24, formato12, modo_ajuste, aux, n, comparador : NODE;  --nós auxiliares
+	
+	fft : TFF; -- flipflop T auxiliar
+	
+	state : MACHINE WITH STATES (s1, s2, s3); --maquina de estados (selecionar 24 ou 12, função 24h, função 12h)
+	
+BEGIN
+	
+	state.clk=clock; --CLOCK DA MAQUINA DE ESTADOS
+	
+	CASE state IS    --Case da maquina de estados
+		
+		WHEN s1 =>
+		
+			saida4[]=B"0010";
+			saida3[]=B"0100";
+			saida2[]=B"0001";
+			saida1[]=B"0010";
+			
+			formato24=botao3;
+			formato12=botao4;
+			
+			IF (formato24) THEN   -- formato24 => BOTAO3		 	
+				state=s2;  
+			END IF;	
+			
+			IF (formato12) THEN   -- formato12 => BOTAO4
+				state=s3;
+			END IF;
+			
+		WHEN s2 =>			-- Modo 24h
+			
+			
+			clk_relogio.clock = clock;
+
+			n=VCC; --indica o formato de hrs
+			
+			modo_ajuste = botao1;
+			clk_alteracao = botao2;
+			ativar_piscar = modo_ajuste;
+	
+		WHEN s3 =>			-- Modo 12h
+		
+			
+			clk_relogio.clock = clock;
+				n=GND; --indica o formato de hrs
+			
+			modo_ajuste = botao1;
+			clk_alteracao = botao2;
+			ativar_piscar = modo_ajuste;
+   
+	END CASE;
+	
+	clock_relogio = clk_relogio.Clock_convertido;
+	
+	relogio1.n=n; 								--RELÓGIO E ALARMES RECEBEM O FORMATO DE HRS A SER SEGUIDO
+	alarme1.n=n;
+	alarme2.n=n;
+	alarme3.n=n; 
+   
+		
+	relogio1.modo_ajuste = modo_ajuste;
+	led4=relogio1.led4;
+	relogio1.seletor[] = seletor_display[];
+	
+	relogio1.clk_alteracao = GND;
+	relogio1.clk = clock_relogio;		
+	alarme1.clk_alarme = GND;
+	alarme2.clk_alarme = GND;
+	alarme3.clk_alarme = GND;
+			
+	CASE seletor_alteracao[] IS
+		WHEN B"00" => 														--SELECIONA O RELÓGIO 1
+		
+			alarme1.clk_alarme = GND;
+			alarme2.clk_alarme = GND;
+			alarme3.clk_alarme = GND;			
+			relogio1.clk_alteracao = clk_alteracao;
+			
+			relogio1.clk = GND;
+			
+			saida1[]=relogio1.saida1[];
+			saida2[]=relogio1.saida2[];
+			saida3[]=relogio1.saida3[];
+			saida4[]=relogio1.saida4[];
+						
+			led1=VCC;
+			led2=VCC;
+			led3=VCC;
+			led4=relogio1.led4;
+			
+			                           	
+			
+		WHEN B"01" => 													-- SELECIONA O ALARME 1
+			alarme1.clk_alarme = clk_alteracao;
+			alarme2.clk_alarme = GND;
+			alarme3.clk_alarme = GND;
+						
+			relogio1.clk_alteracao = GND;
+			relogio1.clk = clock_relogio;
+			relogio1.modo_ajuste=GND;
+						
+			alarme1.seletor_display[] = seletor_display[];
+			saida1[]=alarme1.saida1[];
+			saida2[]=alarme1.saida2[];
+			saida3[]=alarme1.saida3[];
+			saida4[]=alarme1.saida4[];
+						
+			led1=GND;
+			led2=VCC;
+			led3=VCC;
+			led4=alarme1.led4;
+				
+		WHEN B"10" => 														--SELECIONA O ALARME 2
+			
+			alarme1.clk_alarme = GND;
+			alarme2.clk_alarme = clk_alteracao;
+			alarme3.clk_alarme = GND;
+						
+			relogio1.clk_alteracao = GND;
+			relogio1.clk = clock_relogio;
+			relogio1.modo_ajuste=GND;
+						
+			alarme2.seletor_display[] = seletor_display[];
+			saida1[]=alarme2.saida1[];
+			saida2[]=alarme2.saida2[];
+			saida3[]=alarme2.saida3[];
+			saida4[]=alarme2.saida4[];
+						
+			led1=VCC;
+			led2=GND;
+			led3=VCC;
+			led4=alarme2.led4;
+					
+		WHEN B"11" => 													--SELECIONA O ALARME 3
+			
+			alarme1.clk_alarme = GND;
+			alarme2.clk_alarme = GND;
+			alarme3.clk_alarme = clk_alteracao;
+					
+			relogio1.clk_alteracao = GND;
+			relogio1.clk = clock_relogio;
+			relogio1.modo_ajuste=GND;
+						
+			alarme3.seletor_display[] = seletor_display[];
+				--saidas 
+			saida1[]=alarme3.saida1[];
+			saida2[]=alarme3.saida2[];
+			saida3[]=alarme3.saida3[];
+			saida4[]=alarme3.saida4[];
+			
+			led1=VCC;
+			led2=VCC;
+			led3=GND;
+			led4=alarme3.led4;	
+	END CASE;
+				
+	IF fft.q == gnd THEN
+	
+		IF (((relogio1.saida1[] == alarme1.saida1[]) AND     --COMPARADOR DE BITS PARA TOCAR O DESPERTADOR
+			(relogio1.saida2[] == alarme1.saida2[]) AND
+			(relogio1.saida3[] == alarme1.saida3[]) AND
+			(relogio1.saida4[] == alarme1.saida4[]) AND
+			(relogio1.led4 == alarme1.led4)) OR
+				
+			((relogio1.saida1[] == alarme2.saida1[]) AND
+			(relogio1.saida2[] == alarme2.saida2[]) AND
+			(relogio1.saida3[] == alarme2.saida3[]) AND
+			(relogio1.saida4[] == alarme2.saida4[]) AND
+			(relogio1.led4 == alarme2.led4)) OR
+		 
+			((relogio1.saida1[]==alarme3.saida1[]) AND
+			(relogio1.saida2[]==alarme3.saida2[]) AND             
+			(relogio1.saida3[]==alarme3.saida3[]) AND
+			(relogio1.saida4[]==alarme3.saida4[]) AND
+			(relogio1.led4 == alarme3.led4))) AND (clock_relogio == VCC)  THEN
+		
+			comparador=VCC;
+			  
+		ELSE
+			comparador=GND;
+		END IF;
+	END IF;
+	-- saida do ativar_buzzer
+	fft.t = VCC;
+	fft.prn = VCC;
+	fft.clrn = VCC;	
+	fft.clk = aux;
+	aux = comparador $ (botao3 AND botao4 AND fft.q);  --sistema para parar o alarme com 2 botões
+	IF modo_ajuste==GND THEN
+		Buzzer = fft.q AND clk_buzzer AND clk_segundo;
+		ativar_despertador = fft.q;
+	ELSE
+		ativar_despertador = GND;
+		Buzzer = GND;
+	END IF;
+END;

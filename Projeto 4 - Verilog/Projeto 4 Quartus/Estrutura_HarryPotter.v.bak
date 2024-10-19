@@ -1,0 +1,37 @@
+module Estrutura_HarryPotter
+(
+
+	output Buzzer, //Saída sonora
+	input clock, stop, play    //Clock 50MHz da placa
+);
+	
+	wire Disparo_est, Saida_est, Saida_msc;     //Sinais auxiliares para interconectar os códigos
+	wire [27:0] Overflow_temp_est, Overflow_dc_est;
+	
+	Temporizador 	temp( .Saida(Saida_est),            //Mapeamento das entradas e saídas do temporizador
+								.Clk(clock),  
+								.Disparo(Disparo_est),
+								.Overflow(Overflow_temp_est)
+						);
+						
+
+	divisordeclock #(
+        .Contagem(Overflow_dc_est),   // Parâmetro personalizado de contagem (modifique conforme necessário)
+        .n(33)            // Parâmetro personalizado para o número de bits do contador
+    ) divisor_inst (
+        .clk_in(clock),     // Conectando o sinal de clock de entrada
+        .reset(reset),       // Conectando o sinal de reset
+        .clk_out(clock_Buzzer) // O clock de saída que foi dividido
+    );
+	
+	FrereJacques 	musica(  .Clk_out(Saida_msc),       //Mapeamento das entradas e saídas do bloco musical
+									.Disparo(Disparo_est),
+									.stop_in(stop),
+									.Play_in(play),
+									.Temp_out(Overflow_temp_est),
+									.Freq_out(Overflow_dc_est),
+									.Clk_in(clock),
+									.Duracao(Saida_est)
+						);
+	
+endmodule

@@ -1,0 +1,16 @@
+TITLE "Multiplexador";
+
+SUBDESIGN multiplexador -- Nessa seção declaramos os pinos de entrada e saida
+( -- O nome do arquivo .tdf tem que ser igual ao declarado no sub
+   acender_displays[1..0], display1[0..6], display2[0..6], display3[0..6], display4[0..6] : INPUT;  -- pinos de entrada
+   segmentos[0..6] : OUTPUT;  -- pinos de saída
+)
+
+BEGIN
+	CASE acender_displays[] IS
+		WHEN B"00" => segmentos[]=!display1[];
+		WHEN B"01" => segmentos[]=!display2[];
+		WHEN B"10" => segmentos[]=!display3[];
+		WHEN B"11" => segmentos[]=!display4[];
+	END CASE;
+END;

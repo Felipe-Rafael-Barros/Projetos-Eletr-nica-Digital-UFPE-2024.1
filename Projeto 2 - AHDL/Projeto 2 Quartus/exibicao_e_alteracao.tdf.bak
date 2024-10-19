@@ -1,0 +1,25 @@
+TITLE "Definir Hora e Alarmes"
+
+INCLUDE "alarme.inc";
+INCLUDE "relogio.inc";
+
+SUBDESIGN definir_alarmes(
+	seletor_alteracao[0..1], seletor_display[1..0], clk_relogio, clk_alarme : INPUT;
+	saida1[0..3], saida2[0..3], saida3[0..3], saida4[0..3] : OUTPUT;
+)
+
+VARIABLE
+	relogio : relogio WITH (clk_relogio);
+	alarme1 : alarme WITH (seletor_display[1..0],clk_alarme);
+	alarme2 : alarme WITH (seletor_display[1..0],clk_alarme);
+	alarme3 : alarme WITH (seletor_display[1..0],clk_alarme);
+	
+	
+BEGIN
+	CASE seletor_alteracao[] IS
+		WHEN B"00" => saida1[]=relogio[].saida1, saida2[]=relogio[].saida2, saida3=relogio[].saida3, saida4=relogio[].saida4;
+		WHEN B"01" => saida1[]=alarme1[].saida1, saida2[]=alarme1[].saida2, saida3=alarme1[].saida3, saida4=alarme1[].saida4;
+		WHEN B"10" => saida1[]=alarme2[].saida1, saida2[]=alarme2[].saida2, saida3=alarme2[].saida3, saida4=alarme2[].saida4;
+		WHEN B"11" => saida1[]=alarme3[].saida1, saida2[]=alarme3[].saida2, saida3=alarme3[].saida3, saida4=alarme3[].saida4;
+	END CASE;
+END;

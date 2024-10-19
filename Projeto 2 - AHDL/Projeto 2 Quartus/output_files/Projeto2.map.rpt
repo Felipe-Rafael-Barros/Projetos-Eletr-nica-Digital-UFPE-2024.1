@@ -1,0 +1,503 @@
+Analysis & Synthesis report for Projeto2
+Tue Sep 17 22:47:23 2024
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |teste0|exibicao_e_alteracao:inst|state
+  9. State Machine - |teste0|exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio|estado_pulso
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Parameter Settings for User Entity Instance: exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio
+ 13. Parameter Settings for User Entity Instance: Conversor_de_clock:inst2
+ 14. Parameter Settings for User Entity Instance: Conversor_de_clock:inst8
+ 15. Parameter Settings for User Entity Instance: debounce:inst10|Conversor_de_clock:conversor
+ 16. Parameter Settings for User Entity Instance: debounce:inst10|Conversor_de_clock:conversor_05seg
+ 17. Parameter Settings for User Entity Instance: Conversor_de_clock:inst6
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Sep 17 22:47:23 2024       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; Projeto2                                    ;
+; Top-level Entity Name              ; teste0                                      ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 500                                         ;
+;     Total combinational functions  ; 500                                         ;
+;     Dedicated logic registers      ; 209                                         ;
+; Total registers                    ; 209                                         ;
+; Total pins                         ; 22                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                            ; teste0             ; Projeto2           ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.04        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   1.7%      ;
+;     Processors 3-4         ;   1.2%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                         ; Library ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; teste0.bdf                       ; yes             ; User Block Diagram/Schematic File  ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/teste0.bdf                      ;         ;
+; exibicao_e_alteracao.tdf         ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf        ;         ;
+; Conversor_de_clock.tdf           ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/Conversor_de_clock.tdf          ;         ;
+; conversor_relogio.tdf            ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/conversor_relogio.tdf           ;         ;
+; debounce.tdf                     ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/debounce.tdf                    ;         ;
+; relogio.tdf                      ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf                     ;         ;
+; alarme.tdf                       ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf                      ;         ;
+; decodificador_7segmentos.tdf     ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/decodificador_7segmentos.tdf    ;         ;
+; multiplexador.tdf                ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf               ;         ;
+; seletor_display.tdf              ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/seletor_display.tdf             ;         ;
+; ativar_displays_simultaneos.tdf  ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/ativar_displays_simultaneos.tdf ;         ;
+; piscar.tdf                       ; yes             ; User AHDL File                     ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/piscar.tdf                      ;         ;
+; alarme.inc                       ; yes             ; Auto-Found AHDL File               ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.inc                      ;         ;
+; relogio.inc                      ; yes             ; Auto-Found AHDL File               ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.inc                     ;         ;
+; conversor_relogio.inc            ; yes             ; Auto-Found AHDL File               ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/conversor_relogio.inc           ;         ;
+; conversor_de_clock.inc           ; yes             ; Auto-Found AHDL File               ; C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/conversor_de_clock.inc          ;         ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                           ;
++---------------------------------------------+-----------------------------------------+
+; Resource                                    ; Usage                                   ;
++---------------------------------------------+-----------------------------------------+
+; Estimated Total logic elements              ; 500                                     ;
+;                                             ;                                         ;
+; Total combinational functions               ; 500                                     ;
+; Logic element usage by number of LUT inputs ;                                         ;
+;     -- 4 input functions                    ; 249                                     ;
+;     -- 3 input functions                    ; 47                                      ;
+;     -- <=2 input functions                  ; 204                                     ;
+;                                             ;                                         ;
+; Logic elements by mode                      ;                                         ;
+;     -- normal mode                          ; 500                                     ;
+;     -- arithmetic mode                      ; 0                                       ;
+;                                             ;                                         ;
+; Total registers                             ; 209                                     ;
+;     -- Dedicated logic registers            ; 209                                     ;
+;     -- I/O registers                        ; 0                                       ;
+;                                             ;                                         ;
+; I/O pins                                    ; 22                                      ;
+;                                             ;                                         ;
+; Embedded Multiplier 9-bit elements          ; 0                                       ;
+;                                             ;                                         ;
+; Maximum fan-out node                        ; exibicao_e_alteracao:inst|modo_ajuste~0 ;
+; Maximum fan-out                             ; 27                                      ;
+; Total fan-out                               ; 2035                                    ;
+; Average fan-out                             ; 2.70                                    ;
++---------------------------------------------+-----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                  ;
++--------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+-----------------------------+--------------+
+; Compilation Hierarchy Node                 ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                             ; Entity Name                 ; Library Name ;
++--------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+-----------------------------+--------------+
+; |teste0                                    ; 500 (0)             ; 209 (0)                   ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |teste0                                                         ; teste0                      ; work         ;
+;    |Conversor_de_clock:inst2|              ; 34 (34)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|Conversor_de_clock:inst2                                ; Conversor_de_clock          ; work         ;
+;    |Conversor_de_clock:inst6|              ; 20 (20)             ; 15 (15)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|Conversor_de_clock:inst6                                ; Conversor_de_clock          ; work         ;
+;    |Conversor_de_clock:inst8|              ; 21 (21)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|Conversor_de_clock:inst8                                ; Conversor_de_clock          ; work         ;
+;    |ativar_displays_simultaneos:inst24|    ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|ativar_displays_simultaneos:inst24                      ; ativar_displays_simultaneos ; work         ;
+;    |debounce:inst10|                       ; 65 (4)              ; 50 (4)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|debounce:inst10                                         ; debounce                    ; work         ;
+;       |Conversor_de_clock:conversor_05seg| ; 32 (32)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|debounce:inst10|Conversor_de_clock:conversor_05seg      ; Conversor_de_clock          ; work         ;
+;       |Conversor_de_clock:conversor|       ; 29 (29)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|debounce:inst10|Conversor_de_clock:conversor            ; Conversor_de_clock          ; work         ;
+;    |decodificador_7segmentos:inst27|       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|decodificador_7segmentos:inst27                         ; decodificador_7segmentos    ; work         ;
+;    |decodificador_7segmentos:inst28|       ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|decodificador_7segmentos:inst28                         ; decodificador_7segmentos    ; work         ;
+;    |decodificador_7segmentos:inst29|       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|decodificador_7segmentos:inst29                         ; decodificador_7segmentos    ; work         ;
+;    |decodificador_7segmentos:inst30|       ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|decodificador_7segmentos:inst30                         ; decodificador_7segmentos    ; work         ;
+;    |exibicao_e_alteracao:inst|             ; 268 (98)            ; 96 (3)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst                               ; exibicao_e_alteracao        ; work         ;
+;       |Conversor_relogio:clk_relogio|      ; 38 (38)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio ; Conversor_relogio           ; work         ;
+;       |alarme:alarme1|                     ; 34 (34)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst|alarme:alarme1                ; alarme                      ; work         ;
+;       |alarme:alarme2|                     ; 31 (31)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst|alarme:alarme2                ; alarme                      ; work         ;
+;       |alarme:alarme3|                     ; 31 (31)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst|alarme:alarme3                ; alarme                      ; work         ;
+;       |relogio:relogio1|                   ; 36 (36)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|exibicao_e_alteracao:inst|relogio:relogio1              ; relogio                     ; work         ;
+;    |multiplexador:inst22|                  ; 69 (69)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|multiplexador:inst22                                    ; multiplexador               ; work         ;
+;    |piscar:inst1|                          ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|piscar:inst1                                            ; piscar                      ; work         ;
+;    |seletor_display:inst0000|              ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|seletor_display:inst0000                                ; seletor_display             ; work         ;
+;    |seletor_display:inst25|                ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |teste0|seletor_display:inst25                                  ; seletor_display             ; work         ;
++--------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+-----------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |teste0|exibicao_e_alteracao:inst|state ;
++------+----+----+----------------------------------------+
+; Name ; s3 ; s2 ; s1                                     ;
++------+----+----+----------------------------------------+
+; s1   ; 0  ; 0  ; 0                                      ;
+; s2   ; 0  ; 1  ; 1                                      ;
+; s3   ; 1  ; 0  ; 1                                      ;
++------+----+----+----------------------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------+
+; State Machine - |teste0|exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio|estado_pulso ;
++---------+------------------------------------------------------------------------------------+
+; Name    ; MINUTO2                                                                            ;
++---------+------------------------------------------------------------------------------------+
+; MINUTO1 ; 0                                                                                  ;
+; MINUTO2 ; 1                                                                                  ;
++---------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; exibicao_e_alteracao:inst|s3          ; Lost fanout        ;
+; Total Number of Removed Registers = 1 ;                    ;
++---------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 209   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 190   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio ;
++----------------+----------+--------------------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                                     ;
++----------------+----------+--------------------------------------------------------------------------+
+; n              ; 24       ; Untyped                                                                  ;
+; count          ; 10000000 ; Untyped                                                                  ;
++----------------+----------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst2 ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; n              ; 25       ; Signed Integer                            ;
+; count          ; 25000000 ; Untyped                                   ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst8 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; n              ; 15    ; Signed Integer                               ;
+; count          ; 25000 ; Untyped                                      ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debounce:inst10|Conversor_de_clock:conversor ;
++----------------+---------+----------------------------------------------------------------+
+; Parameter Name ; Value   ; Type                                                           ;
++----------------+---------+----------------------------------------------------------------+
+; n              ; 21      ; Untyped                                                        ;
+; count          ; 2000000 ; Untyped                                                        ;
++----------------+---------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debounce:inst10|Conversor_de_clock:conversor_05seg ;
++----------------+---------+----------------------------------------------------------------------+
+; Parameter Name ; Value   ; Type                                                                 ;
++----------------+---------+----------------------------------------------------------------------+
+; n              ; 23      ; Untyped                                                              ;
+; count          ; 7500000 ; Untyped                                                              ;
++----------------+---------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst6 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; n              ; 14    ; Signed Integer                               ;
+; count          ; 10000 ; Untyped                                      ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 22                          ;
+; cycloneiii_ff         ; 209                         ;
+;     CLR               ; 190                         ;
+;     plain             ; 19                          ;
+; cycloneiii_lcell_comb ; 500                         ;
+;     normal            ; 500                         ;
+;         1 data inputs ; 155                         ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 47                          ;
+;         4 data inputs ; 249                         ;
+;                       ;                             ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 3.40                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Tue Sep 17 22:46:57 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Projeto2 -c Projeto2
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file teste0.bdf
+    Info (12023): Found entity 1: teste0
+Warning (287002): Group MSB seletor_alteracao1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 10
+Warning (287002): Group MSB seletor_display1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 10
+Warning (287002): Group MSB saida13 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 12
+Warning (287002): Group MSB saida23 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 12
+Warning (287002): Group MSB saida33 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 12
+Warning (287002): Group MSB saida43 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 12
+Warning (287002): Group MSB seletor1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.inc Line: 24
+Warning (287002): Group MSB seletor_display1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.inc Line: 24
+Warning (287002): Group MSB seletor_display1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.inc Line: 24
+Warning (287002): Group MSB seletor_display1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.inc Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file exibicao_e_alteracao.tdf
+    Info (12023): Found entity 1: exibicao_e_alteracao File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file conversor_de_clock.tdf
+    Info (12023): Found entity 1: Conversor_de_clock File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/Conversor_de_clock.tdf Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file conversor_relogio.tdf
+    Info (12023): Found entity 1: Conversor_relogio File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/conversor_relogio.tdf Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file debounce.tdf
+    Info (12023): Found entity 1: debounce File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/debounce.tdf Line: 5
+Warning (287002): Group MSB seletor1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file relogio.tdf
+    Info (12023): Found entity 1: relogio File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 3
+Warning (287002): Group MSB seletor_display1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file alarme.tdf
+    Info (12023): Found entity 1: alarme File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf Line: 3
+Warning (287002): Group MSB binario3 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/decodificador_7segmentos.tdf Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file decodificador_7segmentos.tdf
+    Info (12023): Found entity 1: decodificador_7segmentos File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/decodificador_7segmentos.tdf Line: 1
+Warning (287002): Group MSB display16 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 5
+Warning (287002): Group MSB display26 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 5
+Warning (287002): Group MSB display36 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 5
+Warning (287002): Group MSB display46 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 5
+Warning (287002): Group MSB segmentos6 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexador.tdf
+    Info (12023): Found entity 1: multiplexador File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/multiplexador.tdf Line: 3
+Warning (287002): Group MSB display_selecionado1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/seletor_display.tdf Line: 6
+Warning (287002): Group MSB Q1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/seletor_display.tdf Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file seletor_display.tdf
+    Info (12023): Found entity 1: seletor_display File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/seletor_display.tdf Line: 3
+Warning (287002): Group MSB disp4 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/ativar_displays_simultaneos.tdf Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file ativar_displays_simultaneos.tdf
+    Info (12023): Found entity 1: ativar_displays_simultaneos File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/ativar_displays_simultaneos.tdf Line: 1
+Warning (287002): Group MSB seletor1 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/piscar.tdf Line: 6
+Warning (287002): Group MSB disp4 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/piscar.tdf Line: 6
+Warning (287002): Group MSB dig4 overrides BIT0 = LSB in actual or default Options Statement File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/piscar.tdf Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file piscar.tdf
+    Info (12023): Found entity 1: piscar File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/piscar.tdf Line: 4
+Info (12127): Elaborating entity "teste0" for the top level hierarchy
+Info (12128): Elaborating entity "exibicao_e_alteracao" for hierarchy "exibicao_e_alteracao:inst"
+Info (12128): Elaborating entity "relogio" for hierarchy "exibicao_e_alteracao:inst|relogio:relogio1" File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 17
+Info (12128): Elaborating entity "alarme" for hierarchy "exibicao_e_alteracao:inst|alarme:alarme1" File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 18
+Info (12128): Elaborating entity "Conversor_relogio" for hierarchy "exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio" File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/exibicao_e_alteracao.tdf Line: 22
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst2"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst8"
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:inst10"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "debounce:inst10|Conversor_de_clock:conversor" File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/debounce.tdf Line: 12
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "debounce:inst10|Conversor_de_clock:conversor_05seg" File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/debounce.tdf Line: 13
+Info (12128): Elaborating entity "seletor_display" for hierarchy "seletor_display:inst25"
+Info (12128): Elaborating entity "piscar" for hierarchy "piscar:inst1"
+Info (12128): Elaborating entity "ativar_displays_simultaneos" for hierarchy "ativar_displays_simultaneos:inst24"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst6"
+Info (12128): Elaborating entity "multiplexador" for hierarchy "multiplexador:inst22"
+Info (12128): Elaborating entity "decodificador_7segmentos" for hierarchy "decodificador_7segmentos:inst27"
+Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|relogio:relogio1|reset[4]~0 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 11
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|alarme:alarme1|reset[4]~0 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf Line: 10
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|alarme:alarme2|reset[4]~0 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf Line: 10
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|alarme:alarme3|reset[4]~0 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/alarme.tdf Line: 10
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|relogio:relogio1|reset[1]~1 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 11
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|relogio:relogio1|reset[2]~2 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 11
+Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer exibicao_e_alteracao:inst|relogio:relogio1|clock[1]~0 File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/Projeto2/relogio.tdf Line: 11
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 522 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 17 output pins
+    Info (21061): Implemented 500 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 4755 megabytes
+    Info: Processing ended: Tue Sep 17 22:47:23 2024
+    Info: Elapsed time: 00:00:26
+    Info: Total CPU time (on all processors): 00:00:46
+
+

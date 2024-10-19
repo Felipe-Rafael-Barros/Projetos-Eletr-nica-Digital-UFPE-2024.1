@@ -1,0 +1,7 @@
+
+State Machine - |principal|LCD:inst|lcd_controller:inst2|estado
+Name estado.ENVIAR estado.PRONTO estado.INICIALIZACAO estado.ENERGIZACAO 
+estado.ENERGIZACAO 0 0 0 0 
+estado.INICIALIZACAO 0 0 1 1 
+estado.PRONTO 0 1 0 1 
+estado.ENVIAR 1 0 0 1 

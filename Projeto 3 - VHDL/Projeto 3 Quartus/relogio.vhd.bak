@@ -1,0 +1,23 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+-- Declaração da entidade
+entity relogio is
+   port (
+      clk : in std_logic;            -- Sinal de clock
+      saida1, saida2, saida3, saida4 : out std_logic_vector(3 downto 0)  -- Saída do contador (4 bits)
+   );
+end relogio;
+
+-- Descrição do comportamento do contador
+architecture Behavioral of relogio is
+	
+begin
+	
+	contador1 : contador_4bits PORT MAP (clk,reset);
+	contador2 : contador_4bits PORT MAP (clk,reset);
+	contador3 : contador_4bits PORT MAP (clk,reset);
+	contador4 : contador_4bits PORT MAP (clk,reset);
+end

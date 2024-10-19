@@ -1,0 +1,40 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+-- Declaração da entidade
+entity contador_4bits is
+   port (
+      clk : in std_logic;            -- Sinal de clock
+      reset : in std_logic;          -- Sinal de reset
+      enable : in std_logic;         -- Habilita o contador
+      count : out std_logic_vector(3 downto 0)  -- Saída do contador (4 bits)
+   );
+end contador_4bits;
+
+-- Descrição do comportamento do contador
+architecture Behavioral of contador_4bits is
+   signal count_reg : std_logic_vector(3 downto 0);  -- Registrador do contador
+begin
+
+   -- Processo síncrono controlado pela borda de subida do clock
+   process (clk, reset)
+   begin
+      -- Condição de reset síncrono
+      if reset = '1' then
+         count_reg <= (others => '0');  -- Reseta o contador para 0
+         
+      -- Verifica a borda de subida do clock
+      elsif rising_edge(clk) then
+         -- Se o contador estiver habilitado
+         if enable = '1' then
+            count_reg <= count_reg + 1;  -- Incrementa o contador
+         end if;
+      end if;
+   end process;
+
+   -- Atribui o valor do registrador à saída
+   count <= count_reg;
+
+end Behavioral;

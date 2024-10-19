@@ -1,0 +1,33 @@
+module MUX_controle(
+
+	INPUT led_db,
+	OUTPUT,
+
+
+
+
+);
+
+
+always@(comando) 
+  begin
+    case(comando)
+    //código no controle IR : decodificação BCD7SEG
+      8'h68: led_db = 8'b1_100_0000;  //exibe 0 no display (botao 0)
+      8'h30: led_db = 8'b1_111_1001;  //exibe 1 no display (botao 1)
+      8'h18: led_db = 8'b1_010_0100;  //exibe 2 no display (botao 2)
+      8'h7A: led_db = 8'b1_011_0000;  //exibe 3 no display (botao 3)
+      8'h10: led_db = 8'b1_001_1001;  //exibe 4 no display (botao 4)
+      8'h38: led_db = 8'b1_001_0010;  //exibe 5 no display (botao 5)
+      8'h5A: led_db = 8'b1_000_0010;  //exibe 6 no display (botao 6)
+      8'h42: led_db = 8'b1_111_1000;  //exibe 7 no display (botao 7)
+      8'h4A: led_db = 8'b1_000_0000;  //exibe 8 no display (botao 8)
+      8'h52: led_db = 8'b1_001_0000;  //exibe 9 no display (botao 9)
+		8'h22: led_db = 8'b1_010_0000;  //exibe A no display (botao PREV) 		
+		8'h02: led_db = 8'b1_000_0011;  //exibe B no display (botao NEXT)
+		8'hC2: led_db = 8'b1_100_0110;  //exibe C no display (botao PLAY)
+		8'hE0: led_db = 8'b1_010_0001;  //exibe D no display (botao VOL-)
+		8'hA8: led_db = 8'b1_000_0110;  //exibe E no display (botao VOL+)
+      default: led_db = 8'b1_000_1110;  //exibe F no display
+    endcase
+  end

@@ -1,0 +1,12 @@
+TITLE "Multiplexador";
+
+SUBDESIGN multiplexador -- Nessa seção declaramos os pinos de entrada e saida
+( -- O nome do arquivo .tdf tem que ser igual ao declarado no sub
+   segmentos1[ : INPUT;  -- pinos de entrada
+    : OUTPUT;  -- pinos de saída
+)
+
+VARIABLE
+   Q[1..0] : NODE;  -- Criação da conexão elétrica, variaveis daqui não são da mesma forma que python ou c
+
+BEGIN  -

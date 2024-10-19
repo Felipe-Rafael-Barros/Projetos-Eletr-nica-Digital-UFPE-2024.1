@@ -1,0 +1,43 @@
+SUBDESIGN ativar_displays_simultaneos
+(
+    clk_in       : INPUT;  
+    saida[1..0], disp[1..4]    : OUTPUT; 
+)
+
+		
+VARIABLE
+	Q[1..0] : TFF;
+	
+BEGIN
+	
+	Q[0].t=vcc;
+	Q[1].t = Q[0].q;
+	Q[].clk=clk_in;
+	Q[].clrn=vcc;
+	Q[].prn=vcc;
+	
+   saida[] = Q[].q;
+	
+	CASE Q[] IS 
+		WHEN B"00" =>
+			disp[1] = GND;
+			disp[2] = VCC;
+			disp[3] = vcc;
+			disp[4] = vcc;
+      WHEN B"01" =>
+			disp[1] = VCC;
+			disp[2] = GND;
+			disp[3] = vcc;
+			disp[4] = vcc;
+      WHEN B"10" =>
+			disp[1] = VCC;
+			disp[2] = VCC;
+			disp[3] = GND;
+			disp[4] = vcc;
+      WHEN B"11" =>
+			disp[1] = VCC;
+			disp[2] = VCC;
+			disp[3] = vcc;
+			disp[4] = GND;
+   END CASE; 
+END;

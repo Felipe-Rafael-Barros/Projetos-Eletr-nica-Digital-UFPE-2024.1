@@ -1,0 +1,33 @@
+TITLE "PISCAR DISPLAY"; -- Quando selecionar o display a ser alterado e quando o alarme tocar
+								-- Além de piscar, deve ligar os outros displays simultaneamente
+
+SUBDESIGN piscar
+(
+	clk_1seg, modo_ajuste, seletor[0..1], disp[1..4], ativar_buzzer : INPUT;
+	dig[1..4] : OUTPUT;
+)
+
+BEGIN
+	
+	IF (modo_ajuste==VCC) THEN
+		CASE seletor[] IS
+			WHEN 0 => 
+				dig[4]=(disp[4] AND clk_1seg);
+			WHEN 1 => 
+				dig[3]=(disp[3] AND clk_1seg);
+			WHEN 2 => 
+				dig[2]=(disp[2] AND clk_1seg);
+			WHEN 3 => 
+				dig[1]=(disp[1] AND clk_1seg);
+		END CASE;
+	ELSIF (modo_ajuste==GND AND ativar_buzzer==VCC) THEN
+		dig[4]=(disp[4] AND clk_1seg);
+		dig[3]=(disp[3] AND clk_1seg);
+		dig[2]=(disp[2] AND clk_1seg);
+		dig[1]=(disp[1] AND clk_1seg);
+	ELSE
+		dig[]=disp[];
+	END IF;
+END;
+				
+				

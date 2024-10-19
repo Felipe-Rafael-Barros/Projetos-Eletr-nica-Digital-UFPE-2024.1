@@ -1,0 +1,19 @@
+module Temperatura_LCD (
+    input clk,
+    input [15:0] data, // 16 bits
+    output reg [3:0] centena, // Centena (4 bits)
+    output reg [3:0] dezena,   // Dezena (4 bits)
+    output reg [3:0] unidade,   // Unidade (4 bits)
+    output reg [3:0] decimos   // Décimos (4 bits)
+);  
+
+    always @(posedge clk or negedge rst_n) begin
+            // Extrai os valores de centena, dezena, unidade e décimos
+            centena <= data[14:12];  // Bits 14 a 12 para centena
+            dezena <= data[11:8];     // Bits 11 a 8 para dezena
+            unidade <= data[7:4];     // Bits 7 a 4 para unidade
+            decimos <= {3'b000, data[7]}; // Bit 7 para décimos, 3 bits a 0
+        
+    end
+
+endmodule

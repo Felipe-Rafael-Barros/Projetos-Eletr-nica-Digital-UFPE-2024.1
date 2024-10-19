@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 10",
+		"os_version" : "10.0"
+	},
+	"error" : {
+		"executable" : "quartus_cdb",
+		"comment" : "not_applicable",
+		"error_message" : "device != NULL",
+		"source_file" : "/quartus/atm/qatm/qatm_cmd.cpp",
+		"line" : "1908",
+		"stack_trace" : "\t0x7ff6e69e5f1c: quartus_cdb + 0x15f1c (?execute@QATM_FRAMEWORK@@UEAA_NXZ + 0x101c)\n\t0x7ffcea1e150c: comp_qexe + 0x1150c (qexe_do_normal + 0x1ec)\n\t0x7ffcea1e6622: comp_qexe + 0x16622 (qexe_run + 0x432)\n\t0x7ffcea1e7371: comp_qexe + 0x17371 (?qexe_standard_main@@YAHPEAVQEXE_FRAMEWORK@@PEAPEBUQEXE_OPTION_DEFINITION@@HPEAPEBD@Z + 0xc1)\n\t0x7ff6e69ef254: quartus_cdb + 0x1f254 (?qatm_main@@YAHHPEAPEBD@Z + 0xa4)\n\t0x7ffcfc8f3258: CCL_MSG + 0x13258 (?msg_main_thread@@YAPEAXPEAX@Z + 0x18)\n\t0x7ffcfc8f4a5e: CCL_MSG + 0x14a5e (?msg_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x6e)\n\t0x7ffcfca36af0: ccl_mem + 0x16af0 (?mem_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x70)\n\t0x7ffcfc8f2af1: CCL_MSG + 0x12af1 (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0xa1)\n\t0x7ff6e6a14b62: quartus_cdb + 0x44b62 (__tmainCRTStartup + 0x10e)\n\t0x7ffd09067373: KERNEL32 + 0x17373 (BaseThreadInitThunk + 0x13)\n\t0x7ffd09c1cc90: ntdll + 0x4cc90 (RtlUserThreadStart + 0x20)\n",
+		"subsystem" : "QATM"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "20.1.1",
+		"build" : "720",
+		"edition" : "Lite Edition"
+	}
+}

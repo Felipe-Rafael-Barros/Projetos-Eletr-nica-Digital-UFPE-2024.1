@@ -1,0 +1,132 @@
+TITLE "Alarme";
+
+SUBDESIGN alarme 
+( 
+   seletor_display[0..1], clk_alarme, n : INPUT; 
+   saida1[3..0], saida2[3..0], saida3[3..0], saida4[3..0], led4 : OUTPUT;
+)
+
+VARIABLE
+   A[8..1],reset[4..1], aux[1..4] : NODE;  
+
+	Q1[3..0],Q2[3..0],Q3[3..0],Q4[3..0],am_pm : TFF;
+
+BEGIN 
+	
+	CASE seletor_display[] IS 
+		WHEN B"00" =>
+			aux1=clk_alarme;
+			aux2=GND;
+			aux3=GND;
+			aux4=GND;
+		WHEN B"01" =>
+			aux1=GND;
+			aux2=clk_alarme;
+			aux3=GND;
+			aux4=GND;
+		WHEN B"10" =>
+			aux1=GND;
+			aux2=GND;
+			aux3=clk_alarme;
+			aux4=GND;
+		WHEN B"11" =>
+			aux1=GND;
+			aux2=GND;
+			aux3=GND;
+			aux4=clk_alarme;
+	END CASE;
+	
+	
+	Q1[].clk= aux1; Q2[].clk= aux2; Q3[].clk= aux3; Q4[].clk= aux4; --sincronização de clocks
+	
+	
+	A1 = Q1[0].q AND Q1[1].q;
+	A2 = Q1[2].q AND A1;
+	Q1[0].t= VCC; Q1[1].t = Q1[0].q; Q1[2].t = A1; Q1[3].t = A2;       --contador de 4bits 1 (menos significativo)
+	
+	Q1[].clrn = NOT reset1; Q1[].prn = VCC; 
+	
+	A3 = Q2[0].q AND Q2[1].q;
+	A4 = Q2[2].q AND A3;
+	Q2[0].t= VCC; Q2[1].t = Q2[0].q; Q2[2].t = A3; Q2[3].t = A4;       --contador de 4bits 2
+	
+	Q2[].clrn = NOT reset2; Q2[].prn = VCC; 
+	
+	A5 = Q3[0].q AND Q3[1].q;
+	A6 = Q3[2].q AND A5;
+	Q3[0].t= VCC; Q3[1].t = Q3[0].q; Q3[2].t = A5; Q3[3].t = A6;       --contador de 4bits 3
+	
+	Q3[].clrn = NOT reset3; Q3[].prn = VCC; 
+	
+	A7 = Q4[0].q AND Q4[1].q;
+	A8 = Q4[2].q AND A7;
+	Q4[0].t= VCC; Q4[1].t = Q4[0].q; Q4[2].t = A7; Q4[3].t = A8;       --contador de 4bits 4 (mais significativo)
+	
+	Q4[].clrn = NOT reset4; Q4[].prn = VCC; 
+	
+	
+	CASE n is
+	
+		when VCC =>
+		
+			IF Q1[].q==B"1010" THEN --reset para o flipflop 1
+				reset1=VCC;
+			ELSE
+				reset1=GND;
+			END IF;
+			IF Q2[].q==B"0110" THEN --reset para o flipflop 2
+				reset2=VCC;
+			ELSE
+				reset2=GND;
+			END IF;
+			
+			IF ((Q3[].q == B"1010") OR ((Q3[].q == B"0100") & (Q4[].q == B"0010")) OR ((Q3[].q > B"0011") & (Q4[].q == B"0010"))) THEN --reset para o flipflop 3
+				reset3=VCC;
+			ELSE
+				reset3=GND;
+			END IF;	
+	
+			IF Q4[].q == B"0011" THEN --reset para o flipflop 4
+				reset4=VCC;
+			ELSE
+				reset4=GND;
+			END IF;
+				led4=VCC; 			 -- Se o formato 24h estiver ativo a led fica apagada
+				
+		WHEN GND =>
+		
+			IF Q1[].q==B"1010" THEN --reset para o flipflop 1
+				reset1=VCC;
+			ELSE
+				reset1=GND;
+			END IF;
+			IF Q2[].q==B"0110" THEN --reset para o flipflop 2
+				reset2=VCC;
+			ELSE
+				reset2=GND;
+			END IF;
+			IF (Q3[].q==B"1010") OR (Q3[].q==B"0010" & Q4[].q==B"0001") OR (Q3[].q>B"0001" & Q4[].q==B"0001") THEN --reset para o flipflop 3
+				reset3=VCC;
+			ELSE 
+				reset3=GND;
+			END IF;
+			IF Q4[].q==B"0010" THEN --reset para o flipflop 4
+				reset4=VCC;
+			ELSE
+				reset4=GND;
+			END IF;
+			am_pm.clk = reset4;
+			led4=am_pm.q;       -- a led recebe o am_pm indicando manhã ou tarde (ligado manhâ)
+				
+				
+	END CASE;
+	
+	am_pm.t = VCC;
+	am_pm.prn = VCC;
+	am_pm.clrn = VCC;
+	
+	saida4[] = Q4[].q;
+	saida3[] = Q3[].q;
+	saida2[] = Q2[].q;
+	saida1[] = Q1[].q;
+END;

@@ -1,0 +1,734 @@
+Analysis & Synthesis report for Projeto3
+Wed Oct 09 02:11:40 2024
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |principal|LCD:inst|lcd_controller:inst2|estado
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: LCD:inst|lcd_controller:inst2
+ 16. Parameter Settings for User Entity Instance: Conversor_de_clock:inst9
+ 17. Parameter Settings for User Entity Instance: Conversor_de_clock:inst5
+ 18. Parameter Settings for User Entity Instance: Conversor_de_clock:inst3
+ 19. Parameter Settings for User Entity Instance: Conversor_de_clock:inst4
+ 20. Parameter Settings for User Entity Instance: Conversor_de_clock:inst6
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Oct 09 02:11:40 2024       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; Projeto3                                    ;
+; Top-level Entity Name              ; principal                                   ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 931                                         ;
+;     Total combinational functions  ; 899                                         ;
+;     Dedicated logic registers      ; 343                                         ;
+; Total registers                    ; 343                                         ;
+; Total pins                         ; 17                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                            ; principal          ; Projeto3           ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; principal.bdf                    ; yes             ; User Block Diagram/Schematic File  ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/principal.bdf          ;         ;
+; Conversor_de_clock.vhd           ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/Conversor_de_clock.vhd ;         ;
+; contador_4bits.vhd               ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/contador_4bits.vhd     ;         ;
+; relogio.vhd                      ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/relogio.vhd            ;         ;
+; alarme.vhd                       ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd             ;         ;
+; seletor_display.vhd              ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_display.vhd    ;         ;
+; seletor_ajuste.vhd               ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_ajuste.vhd     ;         ;
+; gerenciador_saidas.vhd           ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/gerenciador_saidas.vhd ;         ;
+; comparadores.vhd                 ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd       ;         ;
+; LCD.bdf                          ; yes             ; User Block Diagram/Schematic File  ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/LCD.bdf                ;         ;
+; lcd_vhdl_package.vhd             ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_vhdl_package.vhd   ;         ;
+; lcd_logic.vhd                    ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd          ;         ;
+; lcd_controller.vhd               ; yes             ; User VHDL File                     ; C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_controller.vhd     ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 931         ;
+;                                             ;             ;
+; Total combinational functions               ; 899         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 503         ;
+;     -- 3 input functions                    ; 113         ;
+;     -- <=2 input functions                  ; 283         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 780         ;
+;     -- arithmetic mode                      ; 119         ;
+;                                             ;             ;
+; Total registers                             ; 343         ;
+;     -- Dedicated logic registers            ; 343         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 17          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 223         ;
+; Total fan-out                               ; 3831        ;
+; Average fan-out                             ; 3.00        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                  ;
++----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name        ; Library Name ;
++----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------------+--------------+
+; |principal                       ; 899 (0)             ; 343 (0)                   ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |principal                                         ; principal          ; work         ;
+;    |Conversor_de_clock:inst3|    ; 25 (25)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|Conversor_de_clock:inst3                ; Conversor_de_clock ; work         ;
+;    |Conversor_de_clock:inst4|    ; 26 (26)             ; 13 (13)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|Conversor_de_clock:inst4                ; Conversor_de_clock ; work         ;
+;    |Conversor_de_clock:inst5|    ; 45 (45)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|Conversor_de_clock:inst5                ; Conversor_de_clock ; work         ;
+;    |Conversor_de_clock:inst6|    ; 26 (26)             ; 12 (12)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|Conversor_de_clock:inst6                ; Conversor_de_clock ; work         ;
+;    |Conversor_de_clock:inst9|    ; 44 (44)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|Conversor_de_clock:inst9                ; Conversor_de_clock ; work         ;
+;    |LCD:inst|                    ; 457 (0)             ; 95 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|LCD:inst                                ; LCD                ; work         ;
+;       |lcd_controller:inst2|     ; 183 (183)           ; 47 (47)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|LCD:inst|lcd_controller:inst2           ; lcd_controller     ; work         ;
+;       |lcd_logic:inst1|          ; 274 (274)           ; 48 (48)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|LCD:inst|lcd_logic:inst1                ; lcd_logic          ; work         ;
+;    |alarme:inst10|               ; 38 (14)             ; 24 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10                           ; alarme             ; work         ;
+;       |contador_4bits:contador1| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador1  ; contador_4bits     ; work         ;
+;       |contador_4bits:contador2| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador2  ; contador_4bits     ; work         ;
+;       |contador_4bits:contador3| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador3  ; contador_4bits     ; work         ;
+;       |contador_4bits:contador4| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador4  ; contador_4bits     ; work         ;
+;       |contador_4bits:contador5| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador5  ; contador_4bits     ; work         ;
+;       |contador_4bits:contador6| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst10|contador_4bits:contador6  ; contador_4bits     ; work         ;
+;    |alarme:inst7|                ; 44 (20)             ; 24 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7                            ; alarme             ; work         ;
+;       |contador_4bits:contador1| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador1   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador2| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador2   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador3| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador3   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador4| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador4   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador5| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador5   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador6| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst7|contador_4bits:contador6   ; contador_4bits     ; work         ;
+;    |alarme:inst8|                ; 38 (14)             ; 24 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8                            ; alarme             ; work         ;
+;       |contador_4bits:contador1| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador1   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador2| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador2   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador3| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador3   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador4| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador4   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador5| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador5   ; contador_4bits     ; work         ;
+;       |contador_4bits:contador6| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|alarme:inst8|contador_4bits:contador6   ; contador_4bits     ; work         ;
+;    |comparadores:inst46|         ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|comparadores:inst46                     ; comparadores       ; work         ;
+;    |gerenciador_saidas:inst1|    ; 102 (102)           ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|gerenciador_saidas:inst1                ; gerenciador_saidas ; work         ;
+;    |relogio:inst41|              ; 42 (18)             ; 60 (36)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41                          ; relogio            ; work         ;
+;       |contador_4bits:contador1| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador1 ; contador_4bits     ; work         ;
+;       |contador_4bits:contador2| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador2 ; contador_4bits     ; work         ;
+;       |contador_4bits:contador3| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador3 ; contador_4bits     ; work         ;
+;       |contador_4bits:contador4| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador4 ; contador_4bits     ; work         ;
+;       |contador_4bits:contador5| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador5 ; contador_4bits     ; work         ;
+;       |contador_4bits:contador6| ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|relogio:inst41|contador_4bits:contador6 ; contador_4bits     ; work         ;
+;    |seletor_ajuste:inst26|       ; 6 (6)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|seletor_ajuste:inst26                   ; seletor_ajuste     ; work         ;
+;    |seletor_display:inst27|      ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |principal|seletor_display:inst27                  ; seletor_display    ; work         ;
++----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------+
+; State Machine - |principal|LCD:inst|lcd_controller:inst2|estado                                  ;
++----------------------+---------------+---------------+----------------------+--------------------+
+; Name                 ; estado.ENVIAR ; estado.PRONTO ; estado.INICIALIZACAO ; estado.ENERGIZACAO ;
++----------------------+---------------+---------------+----------------------+--------------------+
+; estado.ENERGIZACAO   ; 0             ; 0             ; 0                    ; 0                  ;
+; estado.INICIALIZACAO ; 0             ; 0             ; 1                    ; 1                  ;
+; estado.PRONTO        ; 0             ; 1             ; 0                    ; 1                  ;
+; estado.ENVIAR        ; 1             ; 0             ; 0                    ; 1                  ;
++----------------------+---------------+---------------+----------------------+--------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                       ;
++-----------------------------------------------------+----------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal        ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------------+------------------------+
+; alarme:inst10|clock1                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst10|clock2                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst10|clock3                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst10|clock4                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst10|clock5                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst10|clock6                                ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock1                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock2                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock3                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock4                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock5                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst7|clock6                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock1                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock2                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock3                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock4                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock5                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; alarme:inst8|clock6                                 ; seletor_ajuste:inst26|Mux2 ; yes                    ;
+; Number of user-specified and inferred latches = 18  ;                            ;                        ;
++-----------------------------------------------------+----------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                   ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------+
+; Register name                                                                                                                                                                      ; Reason for Removal                              ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------+
+; LCD:inst|lcd_logic:inst1|L2[0..4]                                                                                                                                                  ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[5]                                                                                                                                                     ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[6..12]                                                                                                                                                 ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[13]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[14,15,17,19,20,23,27,31,35,39,45]                                                                                                                      ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[46]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[47,55]                                                                                                                                                 ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[62]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[63]                                                                                                                                                    ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[70]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[71]                                                                                                                                                    ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[78]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[79]                                                                                                                                                    ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[86]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[87,91,95,98,100,103..105,107,108,111..116]                                                                                                             ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[117]                                                                                                                                                   ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[118..124]                                                                                                                                              ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[125]                                                                                                                                                   ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L2[126,127]                                                                                                                                               ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[0,1,4,7,9..12,15..17,19,23,25,26,28,31,36,39,44,47,53]                                                                                                 ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[54]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[55,63,69]                                                                                                                                              ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[70]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[71,73,77]                                                                                                                                              ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[78]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[79,84,85]                                                                                                                                              ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[86]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[87,92,95,97,100,103,105,107,108,111,112,114,115,119..124]                                                                                              ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[125]                                                                                                                                                   ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|L1[126,127]                                                                                                                                               ; Stuck at GND due to stuck port data_in          ;
+; relogio:inst41|estado                                                                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|estado     ;
+; LCD:inst|lcd_logic:inst1|LR[2..4,7..12,14,15,23,25,28,31,36,39,45,47,49,52,53,55,60,61,63,69,71..73,76,79,81,83..85,87,88,91,93,95,98,99,105,107,111,112,114,116,119,121..124,127] ; Merged with LCD:inst|lcd_logic:inst1|LR[103]    ;
+; LCD:inst|lcd_logic:inst1|LR[1,6,24,30,32,34,38,77,90,96,97,100,102,104,106,108,110,113,115,118,120,126]                                                                            ; Merged with LCD:inst|lcd_logic:inst1|LR[0]      ;
+; LCD:inst|lcd_logic:inst1|LR[41,46,54,58,62,70,80,82,86,92,94]                                                                                                                      ; Merged with LCD:inst|lcd_logic:inst1|LR[13]     ;
+; LCD:inst|lcd_logic:inst1|LR[5,29,37,57,66,67,74,75,78,89,109,117,125]                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|LR[101]    ;
+; LCD:inst|lcd_logic:inst1|LR[19,22,27,33,50,68]                                                                                                                                     ; Merged with LCD:inst|lcd_logic:inst1|LR[18]     ;
+; LCD:inst|lcd_logic:inst1|L1[2,3,6,8,14,18,20,22,27,61,88,89,99,106,110,113,116,118]                                                                                                ; Merged with LCD:inst|lcd_logic:inst1|L1[104]    ;
+; LCD:inst|lcd_logic:inst1|L2[25,75]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[104]    ;
+; LCD:inst|lcd_logic:inst1|L1[24,30,32,50,90,91,94,98]                                                                                                                               ; Merged with LCD:inst|lcd_logic:inst1|L1[102]    ;
+; LCD:inst|lcd_logic:inst1|L2[28,74]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[102]    ;
+; LCD:inst|lcd_logic:inst1|L1[5,13,21,56,62,117]                                                                                                                                     ; Merged with LCD:inst|lcd_logic:inst1|L1[109]    ;
+; LCD:inst|lcd_logic:inst1|L1[45,46,83]                                                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|L1[40]     ;
+; LCD:inst|lcd_logic:inst1|L2[32]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[40]     ;
+; LCD:inst|lcd_logic:inst1|L1[38,43]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[33]     ;
+; LCD:inst|lcd_logic:inst1|L2[42]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[33]     ;
+; LCD:inst|lcd_logic:inst1|L1[58,76,96]                                                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|L1[51]     ;
+; LCD:inst|lcd_logic:inst1|L2[16,18,22,33,53,61,64,69,76,77,85,99,106,110]                                                                                                           ; Merged with LCD:inst|lcd_logic:inst1|L1[51]     ;
+; LCD:inst|lcd_logic:inst1|L1[57]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[49]     ;
+; LCD:inst|lcd_logic:inst1|L2[30,34,88,96,102]                                                                                                                                       ; Merged with LCD:inst|lcd_logic:inst1|L1[49]     ;
+; LCD:inst|lcd_logic:inst1|L2[21,54,72]                                                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|L2[109]    ;
+; LCD:inst|lcd_logic:inst1|L1[68,81]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[66]     ;
+; LCD:inst|lcd_logic:inst1|L2[37,38,50,65]                                                                                                                                           ; Merged with LCD:inst|lcd_logic:inst1|L1[66]     ;
+; LCD:inst|lcd_logic:inst1|LR[48,64]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|LR[21]     ;
+; LCD:inst|lcd_logic:inst1|L1[29,93]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[101]    ;
+; LCD:inst|lcd_logic:inst1|L2[57]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[101]    ;
+; LCD:inst|lcd_logic:inst1|L2[49,68]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[37]     ;
+; LCD:inst|lcd_logic:inst1|L2[29]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[72]     ;
+; LCD:inst|lcd_logic:inst1|LR[26,35,44,59]                                                                                                                                           ; Merged with LCD:inst|lcd_logic:inst1|LR[20]     ;
+; LCD:inst|lcd_logic:inst1|L1[52,65]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[42]     ;
+; LCD:inst|lcd_logic:inst1|L2[48,58]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[42]     ;
+; LCD:inst|lcd_logic:inst1|L1[64,75]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[34]     ;
+; LCD:inst|lcd_logic:inst1|L2[24,67,84]                                                                                                                                              ; Merged with LCD:inst|lcd_logic:inst1|L1[34]     ;
+; LCD:inst|lcd_logic:inst1|LR[42,43,51,56,65]                                                                                                                                        ; Merged with LCD:inst|lcd_logic:inst1|LR[40]     ;
+; LCD:inst|lcd_logic:inst1|L2[93]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L2[44]     ;
+; LCD:inst|lcd_logic:inst1|L2[41,81]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[67]     ;
+; LCD:inst|lcd_logic:inst1|L2[80,83,89,90]                                                                                                                                           ; Merged with LCD:inst|lcd_logic:inst1|L2[59]     ;
+; LCD:inst|lcd_logic:inst1|L2[56]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L2[43]     ;
+; LCD:inst|lcd_logic:inst1|L2[94]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[80]     ;
+; LCD:inst|lcd_logic:inst1|L2[40,101]                                                                                                                                                ; Merged with LCD:inst|lcd_logic:inst1|L1[82]     ;
+; LCD:inst|lcd_logic:inst1|L1[41,60]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L1[35]     ;
+; LCD:inst|lcd_logic:inst1|L2[26,36,82,97]                                                                                                                                           ; Merged with LCD:inst|lcd_logic:inst1|L1[35]     ;
+; LCD:inst|lcd_logic:inst1|L2[73,92]                                                                                                                                                 ; Merged with LCD:inst|lcd_logic:inst1|L2[52]     ;
+; LCD:inst|lcd_logic:inst1|L2[60]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L2[51]     ;
+; LCD:inst|lcd_logic:inst1|L2[66]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[48]     ;
+; LCD:inst|lcd_logic:inst1|LR[103]                                                                                                                                                   ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|lcd_bus[8]                                                                                                                                                ; Stuck at GND due to stuck port data_in          ;
+; LCD:inst|lcd_logic:inst1|LR[13]                                                                                                                                                    ; Stuck at VCC due to stuck port data_in          ;
+; LCD:inst|lcd_controller:inst2|rw                                                                                                                                                   ; Stuck at GND due to stuck port data_in          ;
+; gerenciador_saidas:inst1|estado                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|estado     ;
+; LCD:inst|lcd_logic:inst1|L1[102]                                                                                                                                                   ; Merged with LCD:inst|lcd_logic:inst1|L1[101]    ;
+; LCD:inst|lcd_logic:inst1|L2[109]                                                                                                                                                   ; Merged with LCD:inst|lcd_logic:inst1|L1[51]     ;
+; LCD:inst|lcd_logic:inst1|L1[72]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[49]     ;
+; LCD:inst|lcd_logic:inst1|L1[37]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L1[33]     ;
+; LCD:inst|lcd_logic:inst1|L2[44]                                                                                                                                                    ; Merged with LCD:inst|lcd_logic:inst1|L2[43]     ;
+; Conversor_de_clock:inst9|counter[0]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[0] ;
+; Conversor_de_clock:inst4|counter[0]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[0] ;
+; Conversor_de_clock:inst5|counter[0]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[0] ;
+; Conversor_de_clock:inst6|counter[0]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[0] ;
+; Conversor_de_clock:inst4|counter[1]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[1] ;
+; Conversor_de_clock:inst6|counter[1]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[1] ;
+; Conversor_de_clock:inst5|counter[1]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[1] ;
+; Conversor_de_clock:inst9|counter[1]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[1] ;
+; Conversor_de_clock:inst6|counter[2]                                                                                                                                                ; Merged with Conversor_de_clock:inst4|counter[2] ;
+; Conversor_de_clock:inst5|counter[2]                                                                                                                                                ; Merged with Conversor_de_clock:inst4|counter[2] ;
+; Conversor_de_clock:inst9|counter[2]                                                                                                                                                ; Merged with Conversor_de_clock:inst4|counter[2] ;
+; Conversor_de_clock:inst4|counter[2]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[2] ;
+; Conversor_de_clock:inst5|counter[3]                                                                                                                                                ; Merged with Conversor_de_clock:inst6|counter[3] ;
+; Conversor_de_clock:inst9|counter[3]                                                                                                                                                ; Merged with Conversor_de_clock:inst6|counter[3] ;
+; Conversor_de_clock:inst6|counter[3]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[3] ;
+; Conversor_de_clock:inst9|counter[4]                                                                                                                                                ; Merged with Conversor_de_clock:inst5|counter[4] ;
+; Conversor_de_clock:inst5|counter[4]                                                                                                                                                ; Merged with Conversor_de_clock:inst3|counter[4] ;
+; Conversor_de_clock:inst9|counter[5]                                                                                                                                                ; Merged with Conversor_de_clock:inst5|counter[5] ;
+; LCD:inst|lcd_logic:inst1|lcd_bus[7]                                                                                                                                                ; Merged with LCD:inst|lcd_logic:inst1|lcd_bus[9] ;
+; Total Number of Removed Registers = 378                                                                                                                                            ;                                                 ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                              ;
++-------------------------------------+---------------------------+----------------------------------------+
+; Register name                       ; Reason for Removal        ; Registers Removed due to This Register ;
++-------------------------------------+---------------------------+----------------------------------------+
+; LCD:inst|lcd_logic:inst1|lcd_bus[8] ; Stuck at GND              ; LCD:inst|lcd_controller:inst2|rw       ;
+;                                     ; due to stuck port data_in ;                                        ;
++-------------------------------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 343   ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 7     ;
+; Number of registers using Asynchronous Clear ; 96    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 121   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; LCD:inst|lcd_controller:inst2|busy      ; 2       ;
+; LCD:inst|lcd_logic:inst1|L1[49]         ; 8       ;
+; LCD:inst|lcd_logic:inst1|L1[51]         ; 17      ;
+; LCD:inst|lcd_logic:inst1|L1[33]         ; 5       ;
+; LCD:inst|lcd_logic:inst1|L1[40]         ; 5       ;
+; LCD:inst|lcd_logic:inst1|L1[109]        ; 4       ;
+; LCD:inst|lcd_logic:inst1|L1[80]         ; 2       ;
+; LCD:inst|lcd_logic:inst1|L1[82]         ; 3       ;
+; LCD:inst|lcd_logic:inst1|L2[59]         ; 5       ;
+; LCD:inst|lcd_logic:inst1|L1[59]         ; 1       ;
+; LCD:inst|lcd_logic:inst1|L1[74]         ; 1       ;
+; Total number of inverted registers = 11 ;         ;
++-----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |principal|relogio:inst41|clock3                       ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |principal|seletor_display:inst27|count_reg[1]         ;
+; 5:1                ; 24 bits   ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; Yes        ; |principal|gerenciador_saidas:inst1|saida1[0]          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |principal|seletor_ajuste:inst26|count_reg[1]          ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |principal|LCD:inst|lcd_logic:inst1|LR[0]              ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |principal|LCD:inst|lcd_controller:inst2|rw            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |principal|LCD:inst|lcd_logic:inst1|LR[17]             ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |principal|LCD:inst|lcd_controller:inst2|clk_count[13] ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 56 LEs               ; 16 LEs                 ; Yes        ; |principal|LCD:inst|lcd_controller:inst2|lcd_data[5]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LCD:inst|lcd_controller:inst2 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; clk_freq       ; 50    ; Signed Integer                                    ;
+; display_lines  ; '1'   ; Enumerated                                        ;
+; character_font ; '0'   ; Enumerated                                        ;
+; display_on_off ; '1'   ; Enumerated                                        ;
+; cursor         ; '0'   ; Enumerated                                        ;
+; blink          ; '0'   ; Enumerated                                        ;
+; inc_dec        ; '1'   ; Enumerated                                        ;
+; shift          ; '0'   ; Enumerated                                        ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst9 ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; contagem       ; 75000000 ; Signed Integer                            ;
+; n              ; 27       ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst5 ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; contagem       ; 25000000 ; Signed Integer                            ;
+; n              ; 25       ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst3 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; contagem       ; 20000 ; Signed Integer                               ;
+; n              ; 15    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst4 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; contagem       ; 25000 ; Signed Integer                               ;
+; n              ; 15    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Conversor_de_clock:inst6 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; contagem       ; 30000 ; Signed Integer                               ;
+; n              ; 15    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 17                          ;
+; cycloneiii_ff         ; 343                         ;
+;     CLR               ; 96                          ;
+;     ENA               ; 110                         ;
+;     ENA SCLR          ; 4                           ;
+;     ENA SLD           ; 7                           ;
+;     plain             ; 126                         ;
+; cycloneiii_lcell_comb ; 900                         ;
+;     arith             ; 119                         ;
+;         2 data inputs ; 115                         ;
+;         3 data inputs ; 4                           ;
+;     normal            ; 781                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 35                          ;
+;         2 data inputs ; 133                         ;
+;         3 data inputs ; 109                         ;
+;         4 data inputs ; 503                         ;
+;                       ;                             ;
+; Max LUT depth         ; 12.40                       ;
+; Average LUT depth     ; 5.19                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed Oct 09 02:11:16 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Projeto3 -c Projeto3
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file principal.bdf
+    Info (12023): Found entity 1: principal
+Info (12021): Found 2 design units, including 1 entities, in source file conversor_de_clock.vhd
+    Info (12022): Found design unit 1: Conversor_de_clock-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/Conversor_de_clock.vhd Line: 17
+    Info (12023): Found entity 1: Conversor_de_clock File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/Conversor_de_clock.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file contador_4bits.vhd
+    Info (12022): Found design unit 1: contador_4bits-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/contador_4bits.vhd Line: 13
+    Info (12023): Found entity 1: contador_4bits File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/contador_4bits.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file relogio.vhd
+    Info (12022): Found design unit 1: relogio-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/relogio.vhd Line: 14
+    Info (12023): Found entity 1: relogio File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/relogio.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file alarme.vhd
+    Info (12022): Found design unit 1: alarme-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 17
+    Info (12023): Found entity 1: alarme File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file seletor_display.vhd
+    Info (12022): Found design unit 1: seletor_display-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_display.vhd Line: 14
+    Info (12023): Found entity 1: seletor_display File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_display.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file seletor_ajuste.vhd
+    Info (12022): Found design unit 1: seletor_ajuste-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_ajuste.vhd Line: 13
+    Info (12023): Found entity 1: seletor_ajuste File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_ajuste.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file gerenciador_saidas.vhd
+    Info (12022): Found design unit 1: gerenciador_saidas-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/gerenciador_saidas.vhd Line: 20
+    Info (12023): Found entity 1: gerenciador_saidas File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/gerenciador_saidas.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file comparadores.vhd
+    Info (12022): Found design unit 1: comparadores-Behavioral File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 13
+    Info (12023): Found entity 1: comparadores File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file lcd.bdf
+    Info (12023): Found entity 1: LCD
+Info (12021): Found 2 design units, including 0 entities, in source file lcd_vhdl_package.vhd
+    Info (12022): Found design unit 1: lcd_vhdl_package File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_vhdl_package.vhd Line: 5
+    Info (12022): Found design unit 2: lcd_vhdl_package-body File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_vhdl_package.vhd Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file lcd_logic.vhd
+    Info (12022): Found design unit 1: lcd_logic-bhv File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 17
+    Info (12023): Found entity 1: lcd_logic File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file lcd_controller.vhd
+    Info (12022): Found design unit 1: lcd_controller-bhv File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_controller.vhd Line: 22
+    Info (12023): Found entity 1: lcd_controller File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_controller.vhd Line: 3
+Info (12127): Elaborating entity "principal" for the top level hierarchy
+Info (12128): Elaborating entity "LCD" for hierarchy "LCD:inst"
+Info (12128): Elaborating entity "lcd_controller" for hierarchy "LCD:inst|lcd_controller:inst2"
+Info (12128): Elaborating entity "lcd_logic" for hierarchy "LCD:inst|lcd_logic:inst1"
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(25): used explicit default value for signal "frase_Relogio" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 25
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(26): used explicit default value for signal "frase_Ajuste_Relogio" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 26
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(27): used explicit default value for signal "frase_Ajuste_Alarme1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 27
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(28): used explicit default value for signal "frase_Ajuste_Alarme2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 28
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(29): used explicit default value for signal "frase_Ajuste_Alarme3" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 29
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(35): used explicit default value for signal "frase1_1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 35
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(36): used explicit default value for signal "frase1_2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 36
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(38): used explicit default value for signal "frase2_1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 38
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(39): used explicit default value for signal "frase2_2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 39
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(41): used explicit default value for signal "frase3_1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 41
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(42): used explicit default value for signal "frase3_2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 42
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(44): used explicit default value for signal "frase4_1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 44
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(45): used explicit default value for signal "frase4_2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 45
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(47): used explicit default value for signal "frase5_1" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 47
+Warning (10540): VHDL Signal Declaration warning at lcd_logic.vhd(48): used explicit default value for signal "frase5_2" because signal was never assigned a value File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at lcd_logic.vhd(66): signal "clk_3_seg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 66
+Warning (10492): VHDL Process Statement warning at lcd_logic.vhd(66): signal "estado" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/lcd_logic.vhd Line: 66
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst9"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst5"
+Info (12128): Elaborating entity "seletor_ajuste" for hierarchy "seletor_ajuste:inst26"
+Warning (10492): VHDL Process Statement warning at seletor_ajuste.vhd(34): signal "count_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/seletor_ajuste.vhd Line: 34
+Info (12128): Elaborating entity "gerenciador_saidas" for hierarchy "gerenciador_saidas:inst1"
+Info (12128): Elaborating entity "alarme" for hierarchy "alarme:inst7"
+Warning (10492): VHDL Process Statement warning at alarme.vhd(44): signal "seletor_ajuste" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 44
+Warning (10492): VHDL Process Statement warning at alarme.vhd(58): signal "temp_saida1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 58
+Warning (10492): VHDL Process Statement warning at alarme.vhd(59): signal "temp_saida2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 59
+Warning (10492): VHDL Process Statement warning at alarme.vhd(60): signal "temp_saida3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 60
+Warning (10492): VHDL Process Statement warning at alarme.vhd(61): signal "temp_saida4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 61
+Warning (10492): VHDL Process Statement warning at alarme.vhd(62): signal "temp_saida5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 62
+Warning (10492): VHDL Process Statement warning at alarme.vhd(63): signal "temp_saida6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 63
+Warning (10492): VHDL Process Statement warning at alarme.vhd(67): signal "temp_saida1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 67
+Warning (10492): VHDL Process Statement warning at alarme.vhd(75): signal "temp_saida2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 75
+Warning (10492): VHDL Process Statement warning at alarme.vhd(83): signal "temp_saida3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 83
+Warning (10492): VHDL Process Statement warning at alarme.vhd(91): signal "temp_saida4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 91
+Warning (10492): VHDL Process Statement warning at alarme.vhd(99): signal "temp_saida5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 99
+Warning (10492): VHDL Process Statement warning at alarme.vhd(99): signal "temp_saida6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 99
+Warning (10492): VHDL Process Statement warning at alarme.vhd(107): signal "temp_saida6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 107
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock1", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock2", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock3", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock4", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock5", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Warning (10631): VHDL Process Statement warning at alarme.vhd(42): inferring latch(es) for signal or variable "clock6", which holds its previous value in one or more paths through the process File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock6" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock5" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock4" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock3" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock2" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (10041): Inferred latch for "clock1" at alarme.vhd(42) File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 42
+Info (12128): Elaborating entity "contador_4bits" for hierarchy "alarme:inst7|contador_4bits:contador1" File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/alarme.vhd Line: 30
+Info (12128): Elaborating entity "seletor_display" for hierarchy "seletor_display:inst27"
+Info (12128): Elaborating entity "relogio" for hierarchy "relogio:inst41"
+Info (12128): Elaborating entity "comparadores" for hierarchy "comparadores:inst46"
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(18): signal "comparador1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 18
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(19): signal "clk_buzzer1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 19
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(20): signal "comparador2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 20
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(21): signal "clk_buzzer2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 21
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(22): signal "comparador3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 22
+Warning (10492): VHDL Process Statement warning at comparadores.vhd(23): signal "clk_buzzer3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/lucas/OneDrive/햞ea de Trabalho/Projeto3_organizado/comparadores.vhd Line: 23
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst3"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst4"
+Info (12128): Elaborating entity "Conversor_de_clock" for hierarchy "Conversor_de_clock:inst6"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "lcd_rw" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 963 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 946 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 4798 megabytes
+    Info: Processing ended: Wed Oct 09 02:11:40 2024
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:40
+
+

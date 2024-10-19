@@ -1,0 +1,11 @@
+
+State Machine - |teste0|exibicao_e_alteracao:inst|state
+Name s3 s2 s1 
+s1 0 0 0 
+s2 0 1 1 
+s3 1 0 1 
+
+State Machine - |teste0|exibicao_e_alteracao:inst|Conversor_relogio:clk_relogio|estado_pulso
+Name MINUTO2 
+MINUTO1 0 
+MINUTO2 1 

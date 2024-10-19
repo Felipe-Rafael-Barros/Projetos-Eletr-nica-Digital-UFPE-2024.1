@@ -1,0 +1,43 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity mux_saidas is
+   port (
+		clock : in std_logic;
+      relogio,alarme1,alarme2,alarme3 : in std_logic;  -- Seleciona qual função ajustar
+      saida1_Relogio,,saida1_Alarme1,saida1_Alarme2,saida1_Alarme3: in std_logic_vector(3 downto 0);
+		saida2_Relogio,,saida2_Alarme1,saida2_Alarme2,saida2_Alarme3: in std_logic_vector(3 downto 0);
+		saida3_Relogio,,saida3_Alarme1,saida3_Alarme2,saida3_Alarme3: in std_logic_vector(3 downto 0);
+		saida4_Relogio,,saida4_Alarme1,saida4_Alarme2,saida4_Alarme3: in std_logic_vector(3 downto 0);
+		saida5_Relogio,,saida5_Alarme1,saida5_Alarme2,saida5_Alarme3: in std_logic_vector(3 downto 0);
+		saida6_Relogio,,saida6_Alarme1,saida6_Alarme2,saida6_Alarme3: in std_logic_vector(3 downto 0);
+		saida1,saida2,saida3,saida4,saida5,saida6: out std_logic_vector (3 downto 0);
+   );
+end mux_saidas;
+
+-- Arquitetura do multiplexador
+architecture Behavioral of mux is
+begin
+   -- Processo de multiplexação controlado por 'acender_displays'
+   process(clock)
+   begin
+      if relogio = '1' then
+			saida1 <= saida1_Relogio; saida2 <= saida2_Relogio; saida3 <= saida3_Relogio; saida4 <= saida4_Relogio; saida5 <= saida5_Relogio; saida6 <= saida6_Relogio;
+		end if;
+      
+      if alarme1 = '1' then
+			
+			saida1 <= saida1_alarme1; saida2 <= saida2_alarme1; saida3 <= saida3_alarme1; saida4 <= saida4_alarme1; saida5 <= saida5_alarme1; saida6 <= saida6_alarme1;
+		end if;
+		
+      if alarme2 = '1' then
+			saida1 <= saida1_alarme2; saida2 <= saida2_alarme2; saida3 <= saida3_alarme2; saida4 <= saida4_alarme2; saida5 <= saida5_alarme2; saida6 <= saida6_alarme2;
+		end if;
+		
+      if alarme3 = '1' then
+			saida1 <= saida1_alarme3; saida2 <= saida2_alarme3; saida3 <= saida3_alarme3; saida4 <= saida4_alarme3; saida5 <= saida5_alarme3; saida6 <= saida6_alarme3;
+		end if;
+   end process;
+
+end Behavioral;

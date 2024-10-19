@@ -1,0 +1,39 @@
+PARAMETERS(
+	n  = 5,
+	count = 16
+);
+SUBDESIGN Conversor_de_clock
+(
+    clock  : INPUT;         -- Entrada de clock principal
+             -- Clear/reset para o contador (ativo em 0)
+    q[n-1..0] : OUTPUT;      -- Saída de 20 bits do contador
+)
+VARIABLE
+    Flip[n-1..0] : TFF;      -- Vetor de flip-flops tipo T
+	 N_max_Contagem[n-1..0] : NODE;
+	 clrn : NODE;
+BEGIN
+	 N_max_Contagem[] = count;
+    -- O primeiro flip-flop recebe o clock diretamente
+    Flip[0].clk = NOT clock;
+    Flip[0].t = VCC;        -- O flip-flop T sempre alterna
+    Flip[0].clrn = clrn;    -- Reset para o contador
+    Flip[0].prn = VCC;      -- Preset sempre ativo
+
+    -- Laço para gerar os outros flip-flops
+    FOR i IN 1 TO n-1 GENERATE
+        Flip[i].clk = NOT Flip[i-1].q; -- Clock de cada flip-flop é a saída do anterior
+        Flip[i].t = VCC;
+        Flip[i].clrn = clrn;
+        Flip[i].prn = VCC;
+    END GENERATE;
+	 
+    -- Contagem crescente
+    q[n-1..0] = Flip[].q;
+	 
+	 IF N_max_Contagem[] == q[] THEN
+		clrn = GND;
+	 ELSE
+	   clrn = VCC;
+	 END IF;
+END;

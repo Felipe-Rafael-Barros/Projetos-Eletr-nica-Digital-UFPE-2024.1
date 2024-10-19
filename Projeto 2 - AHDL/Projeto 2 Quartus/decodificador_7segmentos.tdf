@@ -1,0 +1,23 @@
+SUBDESIGN decodificador_7segmentos
+(
+   binario[0..3] : INPUT;    --[Q3 Q2 Q1 Q0]
+   segmentos[6..0] : OUTPUT; --[A B C D E F G]
+)
+
+BEGIN
+
+   TABLE
+      binario[] =>  segmentos[];
+      B"0000"   =>  B"1111110"; -- 0 
+      B"0001"   =>  B"0110000"; -- 1
+      B"0010"   =>  B"1101101"; -- 2
+      B"0011"   =>  B"1111001"; -- 3
+      B"0100"   =>  B"0110011"; -- 4
+      B"0101"   =>  B"1011011"; -- 5
+      B"0110"   =>  B"1011111"; -- 6
+      B"0111"   =>  B"1110000"; -- 7
+      B"1000"   =>  B"1111111"; -- 8
+      B"1001"   =>  B"1111011"; -- 9
+   END TABLE;
+
+END;

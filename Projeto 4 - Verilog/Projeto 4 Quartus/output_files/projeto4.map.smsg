@@ -1,0 +1,3 @@
+Warning (10268): Verilog HDL information at lcd_logic.v(42): always construct contains both blocking and non-blocking assignments File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/agr vai/Projeto_4/lcd_logic.v Line: 42
+Warning (10268): Verilog HDL information at lcd_controle.v(27): always construct contains both blocking and non-blocking assignments File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/agr vai/Projeto_4/lcd_controle.v Line: 27
+Warning (10268): Verilog HDL information at seg_d_verilog.v(66): always construct contains both blocking and non-blocking assignments File: C:/Users/lucas/OneDrive/Área de Trabalho/ELETRÔNICA DIGITAL/agr vai/Projeto_4/seg_d_verilog.v Line: 66

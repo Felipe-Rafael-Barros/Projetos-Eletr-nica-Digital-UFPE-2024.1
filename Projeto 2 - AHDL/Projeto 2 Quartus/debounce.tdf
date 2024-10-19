@@ -1,0 +1,43 @@
+TITLE "Debounce";
+
+INCLUDE "Conversor_de_clock.inc";
+
+SUBDESIGN debounce(
+	clk, entrada1, entrada2, entrada3, entrada4 	: INPUT;
+	saida1, saida2, saida3, saida4 			: OUTPUT;
+)
+
+VARIABLE
+	ffd1, ffd2, ffd3, ffd4 : DFF; 
+	conversor : Conversor_de_clock WITH (n=21,count=2000000);
+	conversor_05seg : Conversor_de_clock WITH (n=23,count=7500000);
+	
+BEGIN
+	conversor.clock = clk;
+	conversor_05seg.clock = clk;
+	
+	ffd1.clk = conversor.Clock_convertido;
+	ffd1.d = NOT entrada1;
+	ffd1.prn = VCC;
+	ffd1.clrn = VCC;
+	saida1 = ffd1.q;
+	
+	ffd2.clk = conversor.Clock_convertido;
+	ffd2.d = NOT entrada2;
+	ffd2.prn = VCC;
+	ffd2.clrn = VCC;	
+	saida2 = (ffd2.q AND conversor_05seg.Clock_convertido);
+	
+	ffd3.clk = conversor.Clock_convertido;
+	ffd3.d = NOT entrada3;
+	ffd3.prn = VCC;
+	ffd3.clrn = VCC;
+	saida3 = ffd3.q;
+	
+	ffd4.clk = conversor.Clock_convertido;
+	ffd4.d = NOT entrada4;
+	ffd4.prn = VCC;
+	ffd4.clrn = VCC;
+	saida4 = ffd4.q;
+	
+END;

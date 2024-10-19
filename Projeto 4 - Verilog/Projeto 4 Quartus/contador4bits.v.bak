@@ -1,0 +1,17 @@
+module contador_4bits (
+    input wire clk,         // Sinal de clock
+    input wire reset,       // Sinal de reset
+    output reg [3:0] count  // Sinal de saída (4 bits)
+);
+
+
+
+
+always @(posedge clk or posedge reset) begin
+    if (reset)              // Se o reset for alto, o contador será reinicializado para 0
+        count <= 4'b0000;  // forma que se incrementa um vetor tamanho ' tipo(valor);
+    else                    // Caso contrário, o contador será incrementado
+        count <= count + 1;
+end
+
+endmodule

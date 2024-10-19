@@ -1,0 +1,42 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+-- Declaração da entidade
+entity Conversor_de_clock is
+   generic (
+      division_factor : integer := 10000000  -- Fator de divisão do clock (exemplo)
+   );
+   port (
+      clk_in : in std_logic;              -- Clock de entrada
+      reset : in std_logic := '0';        -- Sinal de reset
+      clk_out : out std_logic             -- Clock de saída convertido
+   );
+end Conversor_de_clock;
+
+-- Arquitetura do conversor de clock
+architecture Behavioral of Conversor_de_clock is
+   signal counter : unsigned(31 downto 0) := (others => '0');  -- Contador de 32 bits
+   signal clk_out_reg : std_logic := '0';  -- Registrador do clock de saída
+begin
+
+   -- Processo síncrono controlado pela borda de subida do clock de entrada
+   process(clk_in, reset)
+   begin
+      if reset = '1' then
+         counter <= (others => '0');      -- Reset do contador
+         clk_out_reg <= '0';              -- Reset do clock de saída
+      elsif rising_edge(clk_in) then
+         if counter = (division_factor - 1) then
+            counter <= (others => '0');   -- Reinicia o contador
+            clk_out_reg <= not clk_out_reg;  -- Inverte o clock de saída
+         else
+            counter <= counter + 1;       -- Incrementa o contador
+         end if;
+      end if;
+   end process;
+
+   -- Atribui o valor do registrador à saída do clock
+   clk_out <= clk_out_reg;
+
+end Behavioral;

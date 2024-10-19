@@ -1,0 +1,23 @@
+TITLE "Seletor Display";
+
+SUBDESIGN seletor_display -- Nessa seção declaramos os pinos de entrada e saida
+( -- O nome do arquivo .tdf tem que ser igual ao declarado no sub
+   modo_ajuste, seletor : INPUT;  -- pinos de entrada
+   display_selecionado[0..1] : OUTPUT;  -- pinos de saída
+)
+
+VARIABLE
+   Q[0..1] : TFF;  -- Criação da conexão elétrica, variaveis daqui não são da mesma forma que python ou c
+
+BEGIN  -- a linguagem não é compilada em cascata vertical mas sim horizontal
+	
+	Q[].clk = seletor;
+	Q[1].t = modo_ajuste;
+	Q[0].t = Q[1].q;
+	Q[].clrn = modo_ajuste;
+	Q[].prn = vcc;
+	
+	if modo_ajuste==VCC then
+		display_selecionado[]=Q[].q;
+	END IF;
+END;

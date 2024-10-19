@@ -1,0 +1,49 @@
+PARAMETERS(
+	n = 1 , -- número de flip-flops para contagem binária.
+	count = 1 -- valor da contagem
+);
+SUBDESIGN Conversor_de_clock
+(
+    clock  : INPUT;             -- Entrada de clock principal
+    Clock_convertido : OUTPUT;  -- Saída do clock convertido
+)
+VARIABLE
+    Flip[n-1..0] : TFF;      -- Vetor de flip-flops tipo T
+	 Flip_Flop_saida :TFF;    -- Flip-Flop T auxiliar para converter o clock principal
+	 clrn : NODE; -- Clear/reset para o contador (ativo em 0)
+BEGIN
+
+	 Flip_Flop_saida.clk = NOT clrn;   -- Configurando o Flip-Flop Auxiliar
+    Flip_Flop_saida.t = VCC;      
+    Flip_Flop_saida.clrn = VCC;    
+    Flip_Flop_saida.prn = VCC; 
+		
+    -- O primeiro flip-flop recebe o clock diretamente
+    Flip[0].clk = NOT clock;
+    Flip[0].t = VCC;        -- O flip-flop T sempre alterna
+    Flip[0].clrn = clrn;    -- Reset para o contador
+    Flip[0].prn = VCC;      -- Preset sempre ativo
+
+    -- Laço para gerar os outros flip-flops
+    FOR i IN 1 TO n-1 GENERATE
+        Flip[i].clk = NOT Flip[i-1].q; -- Clock de cada flip-flop é a saída do anterior
+        Flip[i].t = VCC;
+        Flip[i].clrn = clrn;
+        Flip[i].prn = VCC;
+    END GENERATE;
+	 
+    -- Contagem crescente
+ 
+	 -- Sistema de reset dos flip-flops após chegar na contagem desejada
+	 
+	 IF count == Flip[].q THEN
+		clrn = GND; -- Ativou o Reset de todos os Flip-Flops
+	 ELSE
+	   clrn = VCC; -- Após o reset desetivou o nó de reset de todos os Flip-Flops
+	 END IF;
+	 
+	 -- Sistema que da clock no Flip-Flop auxiliar após a contagem concluida
+	 
+	 Clock_convertido = NOT Flip_Flop_saida.q; -- cock convertido será a saida do Flip-Flop Auxiliar
+	 
+END;

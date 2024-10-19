@@ -1,0 +1,22 @@
+SUBDESIGN ativar_displays_simultaneos
+(
+    clk_in       : INPUT;  
+    dig[3..0]    : OUTPUT; 
+)
+
+		
+VARIABLE
+	Q[1..0] : NODE;
+BEGIN
+   Q[0] = TFF(VCC, clk_in, VCC, VCC); 
+	Q[1] = TFF(Q[0], clk_in, VCC, VCC); 
+	
+	CASE Q[] IS 
+		WHEN B"00" =>  dig[0] = VCC; -- 0 
+      WHEN B"01" =>  dig[1] = VCC; -- 1
+      WHEN B"10" =>  dig[2] = VCC; -- 2
+      WHEN B"11" =>  dig[3] = VCC; -- 3
+
+   END CASE;
+    
+END;

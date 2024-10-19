@@ -1,0 +1,73 @@
+module alarme(
+    input clk,                  // Sinal de clock
+	 input ENA,          // Sinal de controle (0 para contagem crescente, 1 para decrescente)
+    output [3:0] seg_unidade,   // Unidade dos segundos (0-9)
+    output [3:0] seg_dezena,    // Dezena dos segundos (0-5)
+    output [3:0] min_unidade,   // Unidade dos minutos (0-9)
+    output [3:0] min_dezena,    // Dezena dos minutos (0-5)
+    output [3:0] hora_unidade,  // Unidade das horas (0-9)
+    output [3:0] hora_dezena    // Dezena das horas (0-2)
+);
+
+    // Sinais intermediários para o reset dos contadores
+    wire carry_seg, carry_min, carry_hora;
+
+    // Contador de unidades dos segundos (0-9)
+    contador4bits contador_seg_unidade (
+        .clk(clk),
+        .reset((seg_unidade == 4'd9 && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd9),       // Valor máximo para unidades dos segundos
+        .count(seg_unidade)
+    );
+
+    // Contador de dezenas dos segundos (0-5)
+    contador4bits contador_seg_dezena (
+        .clk(clk),
+        .reset((seg_dezena == 4'd5 && seg_unidade == 4'd9 && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd5),       // Valor máximo para dezenas dos segundos
+        .count(seg_dezena)
+    );
+    
+    assign carry_seg = (seg_unidade == 4'd9 && seg_dezena == 4'd5);  // Carry para minutos
+
+    // Contador de unidades dos minutos (0-9)
+    contador4bits contador_min_unidade (
+        .clk(clk),
+        .reset((min_unidade == 4'd9 && carry_seg && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd9),       // Valor máximo para unidades dos minutos
+        .count(min_unidade)
+    );
+
+    // Contador de dezenas dos minutos (0-5)
+    contador4bits contador_min_dezena (
+        .clk(clk),
+        .reset((min_dezena == 4'd5 && min_unidade == 4'd9 && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd5),       // Valor máximo para dezenas dos minutos
+        .count(min_dezena)
+    );
+
+    assign carry_min = (min_unidade == 4'd9 && min_dezena == 4'd5);  // Carry para horas
+
+    // Contador de unidades das horas (0-9) ou (0-3)
+    contador4bits contador_hora_unidade (
+        .clk(clk),
+        .reset((hora_unidade == 4'd9 && carry_min && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd9),       // Valor máximo para unidades das horas
+        .count(hora_unidade)
+    );
+
+    // Contador de dezenas das horas (0-2)
+    contador4bits contador_hora_dezena (
+        .clk(clk),
+        .reset((hora_dezena == 4'd2 && hora_unidade == 4'd3 && !ENA)),
+        .decrescente(ENA),
+        .max_value(4'd2),       // Valor máximo para dezenas das horas
+        .count(hora_dezena)
+    );
+
+endmodule
